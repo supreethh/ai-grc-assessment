@@ -8,25 +8,26 @@ The workflow processes vendor security questionnaires and combines deterministic
 
 ## Architecture
 
-Vendor Questionnaire
-        ↓
-Deterministic Assessment Routing
-        ↓
- ┌──────────────┬──────────────┐
- ↓              ↓
-AI Agent       Deterministic
- ↓              ↓
- └───────┬──────┘
-         ↓
-       Merge
-         ↓
-  Final Assessment
-         ↓
-   Finding Filter
-         ↓
-Risk / Remediation / SLA
-         ↓
-   Google Sheets
+```mermaid
+flowchart TD
+    A[Vendor Questionnaire] --> B[Deterministic Assessment Routing]
+
+    B -->|Confident| C[Deterministic Assessment]
+    B -->|Requires Contextual Judgment| D[AI GRC Agent]
+
+    C --> E[Merge]
+    D --> F[Structured AI Output]
+    F --> E
+
+    E --> G[Final Assessment]
+    G --> H{Assessment ≠ Satisfactory?}
+
+    H -->|Yes| I[Risk / Remediation / SLA]
+    H -->|No| J[Assessment Register]
+
+    I --> K[Google Sheets]
+    J --> K
+```
 
 ## Key Features
 
