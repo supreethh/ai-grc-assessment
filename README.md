@@ -45,7 +45,7 @@ flowchart TD
 
 - n8n
 - Agentic AI
-- Claude
+- OpenAI
 - Google Sheets
 - JavaScript
 - CSV
